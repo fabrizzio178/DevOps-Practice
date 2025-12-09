@@ -10,18 +10,10 @@ pipeline{
 		}
 
 		stage('Compilar con Maven'){
-			agent{ // Aqui el agent es el lugar donde se va a ejecutar este stage
-				docker{
-					image 'maven:3.9.6-eclipse-temurin-21-alpine'
-					// se mapea el caché de mvn para que no baje internet
-					args '-v $HOME/.m2:/root/.m2'
-					// args son argumentos adicionales que Jenkins le pasa al comando de Docker
-					// que usa para crear el contenedor.
-				}
-			}
 			steps{
 				echo 'Compilando.'
-				sh 'mvn clean package -DskipTests' // sh es shell, ejecutar el comando como si fuera cmd de Linux
+				sh 'chmod +x mvnw'
+				sh './mvwn clean package -DskipTests' // sh es shell, ejecutar el comando como si fuera cmd de Linux
 			}
 		}
 
