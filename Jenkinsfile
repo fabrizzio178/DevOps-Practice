@@ -12,8 +12,8 @@ pipeline{
 		stage('Compilar con Maven'){
 			steps{
 				echo 'Compilando.'
-				sh 'chmod +x mvnw'
-				sh './mvwn clean package -DskipTests' // sh es shell, ejecutar el comando como si fuera cmd de Linux
+				sh 'chmod +x mvn'
+				sh './mvn clean package -DskipTests' // sh es shell, ejecutar el comando como si fuera cmd de Linux
 			}
 		}
 
